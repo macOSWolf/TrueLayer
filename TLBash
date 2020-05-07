@@ -12,6 +12,7 @@ echo "Name of script:" $0 "\n" >> $HOME/TrueLayer/TLTest.txt
 #Directory of files and folders in running order
 echo "Files % Folders in running order are as listed:" `ls-a` "\n" >> $HOME/TrueLayer/TLTest.txt
 #IP Address
-echo "Your IP Address is:" `IP=$(hostname -I) "\n" >>$HOME/TrueLayer/TLTest.txt
+echo "Your IP Address is:" `IP=$(hostname -I) "\n" >> $HOME/TrueLayer/TLTest.txt
 #System Ram
 #Okay I need to figure this one out 
+#You forgot another command after echo, ShellCheck wont run the command properly 
