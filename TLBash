@@ -1,18 +1,34 @@
 #!/bin/bash
-if [ ! -d $HOME/TrueLayer ]
-
+if [ ! -d "$HOME"/TrueLayer ]
 then
 
-mkdir $HOME/TrueLayer
-touch $HOME/TrueLayer/TLTest.txt
+mkdir "$HOME"/TrueLayer
+touch "$HOME"/TrueLayer/TLTest.txt
 #Time
-echo "TLTest run on" `date +%T` "\n" >> $HOME/TrueLayer/TLTest.txt
+echo -e "My script was run at" $(date +%T) "sharp!" "\n" >> "$HOME"/TrueLayer/TLTest.txt
 #Name
-echo "Name of script:" $0 "\n" >> $HOME/TrueLayer/TLTest.txt
+echo -e "My name is" $0 "\n" >> "$HOME"/TrueLayer/TLTest.txt
 #Directory of files and folders in running order
-echo "Files % Folders in running order are as listed:" `ls-a` "\n" >> $HOME/TrueLayer/TLTest.txt
+echo -e "The directory I am currently trapped in is as follows:\n" $(ls -a) "\n" >> "$HOME"/TrueLayer/TLTest.txt
 #IP Address
-echo "Your IP Address is:" `IP=$(hostname -I) "\n" >> $HOME/TrueLayer/TLTest.txt
-#System Ram
-#Okay I need to figure this one out 
-#You forgot another command after echo, ShellCheck wont run the command properly 
+echo -e "My IP Address is" $(curl ifconfig.me) "\n"  >> "$HOME"/TrueLayer/TLTest.txt
+#System RAM
+echo -e "My available system RAM is currently" `awk '/^Mem/ {print $3}' <(free -m)` "\n" >> "$HOME"/TrueLayer/TLTest.txt
+#Who ran me?
+echo -e "My PID is: "$$ "and I was ran by someone who likes to call themselves" "$USER" "\n" >> "$HOME"/TrueLayer/TLTest.txt
+else
+#Deja-vu
+echo -e "--------------I was ran before! Here is some more information:\n" >> "$HOME"/TrueLayer/TLTest.txt
+##Time
+echo -e "My script was run at" $(date +%T) "sharp!" "\n" >> "$HOME"/TrueLayer/TLTest.txt
+#Name
+echo -e "My name is" $0 "\n" >> "$HOME"/TrueLayer/TLTest.txt
+#Directory of files and folders in running order
+echo -e "The directory I am currently trapped in is as follows:\n" $(ls -a) "\n" >> "$HOME"/TrueLayer/TLTest.txt
+#IP Address
+echo -e "My IP Address is" $(curl ifconfig.me) "\n"  >> "$HOME"/TrueLayer/TLTest.txt
+#System RAM
+echo -e "My available system RAM is currently" `awk '/^Mem/ {print $3}' <(free -m)` "\n" >> "$HOME"/TrueLayer/TLTest.txt
+#Who ran me?
+echo -e "My PID is: "$$ "and I was ran by someone who likes to call themselves" "$USER" "\n" >> "$HOME"/TrueLayer/TLTest.txt
+fi
